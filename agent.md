@@ -28,32 +28,32 @@ Dokumen ini adalah **panduan kerja utama (Task Checklist)** untuk AI Agent. Agen
 ## 📋 TASK CHECKLIST
 
 ### 🛫 Phase 1: Environment Setup & Dependencies
-- [x] **Task 1.1:** Inisialisasi/Verifikasi struktur project Next.js (App Router, TypeScript, Tailwind CSS, alias `@/*`).
-- [x] **Task 1.2:** Install NPM dependencies sesuai `@referensi-ui.md`:
+- [ ] **Task 1.1:** Inisialisasi/Verifikasi struktur project Next.js (App Router, TypeScript, Tailwind CSS, alias `@/*`).
+- [ ] **Task 1.2:** Install NPM dependencies sesuai `@referensi-ui.md`:
   `npm install @radix-ui/react-slot class-variance-authority lucide-react @radix-ui/react-dialog @radix-ui/react-label @radix-ui/react-icons @radix-ui/react-navigation-menu framer-motion clsx tailwind-merge`
-- [x] **Task 1.3:** Setup folder structure di `src/components/ui/` dan `src/components/ui/hero-01-utils/`.
-- [x] **Task 1.4 (Git):** Hubungkan remote repository `https://github.com/workhendry20-creator/webtizen` (jika belum), lalu commit & push setup awal.
+- [ ] **Task 1.3:** Setup folder structure di `src/components/ui/` dan `src/components/ui/hero-01-utils/`.
+- [ ] **Task 1.4 (Git):** Hubungkan remote repository `https://github.com/workhendry20-creator/webtizen` (jika belum), lalu commit & push setup awal.
 
 ---
 
 ### 🧩 Phase 2: Primitive UI Components Setup
-- [x] **Task 2.1:** Buat file `@/components/ui/button.tsx` (dari `@referensi-ui.md`).
-- [x] **Task 2.2:** Buat file `@/components/ui/sheet.tsx` (dari `@referensi-ui.md`).
-- [x] **Task 2.3:** Buat file `@/components/ui/input.tsx` & `@/components/ui/label.tsx` (dari `@referensi-ui.md`).
-- [x] **Task 2.4:** Buat file `@/components/ui/navigation-menu.tsx` (dari `@referensi-ui.md`).
-- [x] **Task 2.5 (Git):** Commit & push komponen primitives ke GitHub.
+- [ ] **Task 2.1:** Buat file `@/components/ui/button.tsx` (dari `@referensi-ui.md`).
+- [ ] **Task 2.2:** Buat file `@/components/ui/sheet.tsx` (dari `@referensi-ui.md`).
+- [ ] **Task 2.3:** Buat file `@/components/ui/input.tsx` & `@/components/ui/label.tsx` (dari `@referensi-ui.md`).
+- [ ] **Task 2.4:** Buat file `@/components/ui/navigation-menu.tsx` (dari `@referensi-ui.md`).
+- [ ] **Task 2.5 (Git):** Commit & push komponen primitives ke GitHub.
 
 ---
 
 ### 🚀 Phase 3: Webtizen Hero Section Component Integration
-- [ ] **Task 3.1:** Buat sub-komponen utility Hero di `@/components/ui/hero-01-utils/` (`header.tsx`, `hero.tsx`, `brand-slider.tsx`).
-- [ ] **Task 3.2:** Buat komponen utama `@/components/ui/hero-01.tsx` dengan kustomisasi data Webtizen dari `@DESIGN.md`:
-  - [ ] Update `navigationData` (Beranda, Layanan, Paket Harga, Portofolio, FAQ).
-  - [ ] Update Hero Headline & Subtitle ("Bantu UMKM Naik Kelas Lewat Website Profesional").
-  - [ ] Update CTA WhatsApp Direct Link (`https://wa.me/628XXXXXXXXX?text=...`).
-  - [ ] Update `avatarList` dengan Unsplash stock images.
-  - [ ] Update `brandList` dengan kategori bisnis UMKM (F&B, Fashion & Retail, Jasa, Toko Online).
-- [ ] **Task 3.3 (Git):** Commit & push Hero section ke GitHub.
+- [x] **Task 3.1:** Buat sub-komponen utility Hero di `@/components/ui/hero-01-utils/` (`header.tsx`, `hero.tsx`, `brand-slider.tsx`).
+- [x] **Task 3.2:** Buat komponen utama `@/components/ui/hero-01.tsx` dengan kustomisasi data Webtizen dari `@DESIGN.md`:
+  - [x] Update `navigationData` (Beranda, Layanan, Paket Harga, Portofolio, FAQ).
+  - [x] Update Hero Headline & Subtitle ("Bantu UMKM Naik Kelas Lewat Website Profesional").
+  - [x] Update CTA WhatsApp Direct Link (`https://wa.me/628XXXXXXXXX?text=...`).
+  - [x] Update `avatarList` dengan Unsplash stock images.
+  - [x] Update `brandList` dengan kategori bisnis UMKM (F&B, Fashion & Retail, Jasa, Toko Online).
+- [x] **Task 3.3 (Git):** Commit & push Hero section ke GitHub.
 
 ---
 
