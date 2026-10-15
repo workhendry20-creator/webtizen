@@ -28,20 +28,20 @@ Dokumen ini adalah **panduan kerja utama (Task Checklist)** untuk AI Agent. Agen
 ## 📋 TASK CHECKLIST
 
 ### 🛫 Phase 1: Environment Setup & Dependencies
-- [ ] **Task 1.1:** Inisialisasi/Verifikasi struktur project Next.js (App Router, TypeScript, Tailwind CSS, alias `@/*`).
-- [ ] **Task 1.2:** Install NPM dependencies sesuai `@referensi-ui.md`:
+- [x] **Task 1.1:** Inisialisasi/Verifikasi struktur project Next.js (App Router, TypeScript, Tailwind CSS, alias `@/*`).
+- [x] **Task 1.2:** Install NPM dependencies sesuai `@referensi-ui.md`:
   `npm install @radix-ui/react-slot class-variance-authority lucide-react @radix-ui/react-dialog @radix-ui/react-label @radix-ui/react-icons @radix-ui/react-navigation-menu framer-motion clsx tailwind-merge`
-- [ ] **Task 1.3:** Setup folder structure di `src/components/ui/` dan `src/components/ui/hero-01-utils/`.
-- [ ] **Task 1.4 (Git):** Hubungkan remote repository `https://github.com/workhendry20-creator/webtizen` (jika belum), lalu commit & push setup awal.
+- [x] **Task 1.3:** Setup folder structure di `src/components/ui/` dan `src/components/ui/hero-01-utils/`.
+- [x] **Task 1.4 (Git):** Hubungkan remote repository `https://github.com/workhendry20-creator/webtizen` (jika belum), lalu commit & push setup awal.
 
 ---
 
 ### 🧩 Phase 2: Primitive UI Components Setup
-- [ ] **Task 2.1:** Buat file `@/components/ui/button.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.2:** Buat file `@/components/ui/sheet.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.3:** Buat file `@/components/ui/input.tsx` & `@/components/ui/label.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.4:** Buat file `@/components/ui/navigation-menu.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.5 (Git):** Commit & push komponen primitives ke GitHub.
+- [x] **Task 2.1:** Buat file `@/components/ui/button.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.2:** Buat file `@/components/ui/sheet.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.3:** Buat file `@/components/ui/input.tsx` & `@/components/ui/label.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.4:** Buat file `@/components/ui/navigation-menu.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.5 (Git):** Commit & push komponen primitives ke GitHub.
 
 ---
 
