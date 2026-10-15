@@ -58,11 +58,11 @@ Dokumen ini adalah **panduan kerja utama (Task Checklist)** untuk AI Agent. Agen
 ---
 
 ### 📱 Phase 4: Page Assembly, Responsive Check & Build
-- [ ] **Task 4.1:** Rakit komponen Hero dan Navigation di `src/app/page.tsx`.
-- [ ] **Task 4.2:** Verifikasi tampilan responsif (Mobile-first check untuk layar HP `< 768px`).
-- [ ] **Task 4.3:** Jalankan `npm run build` atau `npm run dev` untuk memastikan **0 TypeScript error** dan **0 Tailwind syntax error**.
-- [ ] **Task 4.4 (Git Final Push):** Commit & push hasil akhir ke GitHub repository `https://github.com/workhendry20-creator/webtizen`.
-- [ ] **Task 4.5:** Edit dan tandai seluruh checklist di `AGENT.md` ini menjadi selesai (`[x]`).
+- [x] **Task 4.1:** Rakit komponen Hero dan Navigation di `src/app/page.tsx`.
+- [x] **Task 4.2:** Verifikasi tampilan responsif (Mobile-first check untuk layar HP `< 768px`).
+- [x] **Task 4.3:** Jalankan `npm run build` atau `npm run dev` untuk memastikan **0 TypeScript error** dan **0 Tailwind syntax error**.
+- [x] **Task 4.4 (Git Final Push):** Commit & push hasil akhir ke GitHub repository `https://github.com/workhendry20-creator/webtizen`.
+- [x] **Task 4.5:** Edit dan tandai seluruh checklist di `AGENT.md` ini menjadi selesai (`[x]`).
 
 ---
 
