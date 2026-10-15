@@ -87,3 +87,5 @@ Beri instruksi ini ke Agent untuk memulai:
 - [x] **Task 5.4:** Rakit seluruh modular section di `src/app/page.tsx`.
 - [x] **Task 5.5:** Verifikasi build produksi (`npm run build`) dengan hasil **0 TypeScript error** dan **0 hydration error**.
 - [x] **Task 5.6 (Git):** Commit & push hasil refactor ke remote repository GitHub `https://github.com/workhendry20-creator/webtizen`.
+
+- [x] **Task 5.7 (UI/UX Polish):** Implement animated sliding active pill on top navbar with Framer Motion (`layoutId="activeNavPill"`) & scroll spy synchronization.
