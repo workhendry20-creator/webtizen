@@ -1,56 +1,48 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand: #437055;
+  --color-brand-dark: #2c4a38;
+  --color-brand-light: #f2f7f4;
+  --color-brand-soft: #e1ede5;
+  --color-brand-accent: #355943;
+
+  --color-editorial-black: #121316;
+  --color-editorial-charcoal: #22252a;
+  --color-editorial-muted: #68707d;
+  --color-editorial-border: #e4e7ec;
+  --color-editorial-surface: #fafafa;
+
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", sans-serif;
+  --font-serif: var(--font-serif), "Newsreader", Georgia, serif;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #09090b;
-  --card: #ffffff;
-  --card-foreground: #09090b;
-  --popover: #ffffff;
-  --popover-foreground: #09090b;
-  --primary: #18181b;
-  --primary-foreground: #fafafa;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #f4f4f5;
-  --accent-foreground: #18181b;
-  --destructive: #ef4444;
-  --destructive-foreground: #fafafa;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #18181b;
-  --radius: 0.5rem;
+  --foreground: #22252a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+/* Subtle editorial styling */
+.font-editorial-italic {
+  font-family: var(--font-serif), 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+.hero-heading {
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+/* Background aura matching shadcnspace aesthetic */
+.mesh-aura {
+  background: 
+    radial-gradient(circle at 18% 28%, rgba(206, 237, 219, 0.55) 0%, rgba(255, 255, 255, 0) 50%),
+    radial-gradient(circle at 82% 38%, rgba(255, 246, 222, 0.65) 0%, rgba(255, 255, 255, 0) 50%),
+    radial-gradient(circle at 50% 12%, rgba(235, 243, 238, 0.45) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+.subtle-border {
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }

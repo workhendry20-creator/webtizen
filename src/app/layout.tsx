@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Plus_Jakarta_Sans } from "next/font/google"
+import { Plus_Jakarta_Sans, Newsreader } from "next/font/google"
 import "./globals.css"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -8,16 +8,24 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 })
 
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  style: ["normal", "italic"],
+  display: "swap",
+})
+
 export const metadata: Metadata = {
-  title: "Webtizen.id — Jasa Pembuatan Website & Solusi Digital UMKM",
+  title: "Webtizen.id — Solusi Jasa Pembuatan Website Profesional untuk UMKM",
   description:
-    "Bantu UMKM Naik Kelas Lewat Website Profesional. Jasa pembuatan website cepat, terjangkau, dan tanpa ribet di Indonesia.",
+    "Bantu UMKM naik kelas dengan website profesional. Jasa pembuatan website cepat, terjangkau, terima beres, dan langsung siap kebanjiran order via WhatsApp otomatis.",
   keywords: [
     "jasa pembuatan website",
     "website UMKM",
     "web developer indonesia",
     "website murah",
     "solusi digital UMKM",
+    "Webtizen",
   ],
 }
 
@@ -27,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="id" className={`${plusJakartaSans.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-white font-sans text-slate-900 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+    <html lang="id" className={`${plusJakartaSans.variable} ${newsreader.variable} scroll-smooth`}>
+      <body className="bg-white text-editorial-charcoal font-sans antialiased selection:bg-brand selection:text-white">
         {children}
       </body>
     </html>

@@ -72,3 +72,18 @@ Beri instruksi ini ke Agent untuk memulai:
 
 > *"Agent, tolong baca `@PRD.md`, `@DESIGN.md`, dan `@referensi-ui.md`.*  
 > *Mulaikah mengeksekusi task dari Phase 1 di `AGENT.md` secara bertahap. Selalu berikan output ringkas, selalu lakukan commit & push ke GitHub `https://github.com/workhendry20-creator/webtizen` setelah setiap milestone, dan edit `AGENT.md` untuk mencentang task `[x]` yang sudah selesai!"*
+---
+
+### 🎨 Phase 5: Stitch Static HTML/CSS Refactor to Modular Next.js Components
+- [x] **Task 5.1:** Ekstraksi aset Stitch (`code.html`, `screen.png`, `logo.png`).
+- [x] **Task 5.2:** Setup design tokens Tailwind CSS v4 (`brand-*`, `editorial-*`), typography (`Newsreader` italic, `Plus Jakarta Sans`), dan custom utilities (`mesh-aura`, `hero-heading`) di `globals.css` dan `layout.tsx`.
+- [x] **Task 5.3:** Refactor elemen HTML statis menjadi komponen modular di `@/components/sections/`:
+  - [x] `@/components/sections/Navbar.tsx`: Floating pill navigation, mobile responsive drawer toggle, WhatsApp CTA button.
+  - [x] `@/components/sections/Hero.tsx`: Mesh aura background, badge status, editorial headline, avatar rating stack, UMKM sector ticker.
+  - [x] `@/components/sections/Services.tsx`: Value proposition 3 pillars, 4 spesialisasi sektor UMKM, 4 langkah alur kerja santai.
+  - [x] `@/components/sections/Pricing.tsx`: Paket Starter, Paket Terima Beres (Featured), note custom consultation, 3 showcase portofolio nyata.
+  - [x] `@/components/sections/FAQ.tsx`: Testimoni klien (Dimas Prasetyo), 4 collapsible accordion FAQ items.
+  - [x] `@/components/sections/Footer.tsx`: Final CTA mesh aura banner, copyright, quick links, direct WhatsApp link.
+- [x] **Task 5.4:** Rakit seluruh modular section di `src/app/page.tsx`.
+- [x] **Task 5.5:** Verifikasi build produksi (`npm run build`) dengan hasil **0 TypeScript error** dan **0 hydration error**.
+- [x] **Task 5.6 (Git):** Commit & push hasil refactor ke remote repository GitHub `https://github.com/workhendry20-creator/webtizen`.
