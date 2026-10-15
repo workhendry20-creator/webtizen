@@ -37,11 +37,11 @@ Dokumen ini adalah **panduan kerja utama (Task Checklist)** untuk AI Agent. Agen
 ---
 
 ### 🧩 Phase 2: Primitive UI Components Setup
-- [ ] **Task 2.1:** Buat file `@/components/ui/button.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.2:** Buat file `@/components/ui/sheet.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.3:** Buat file `@/components/ui/input.tsx` & `@/components/ui/label.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.4:** Buat file `@/components/ui/navigation-menu.tsx` (dari `@referensi-ui.md`).
-- [ ] **Task 2.5 (Git):** Commit & push komponen primitives ke GitHub.
+- [x] **Task 2.1:** Buat file `@/components/ui/button.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.2:** Buat file `@/components/ui/sheet.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.3:** Buat file `@/components/ui/input.tsx` & `@/components/ui/label.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.4:** Buat file `@/components/ui/navigation-menu.tsx` (dari `@referensi-ui.md`).
+- [x] **Task 2.5 (Git):** Commit & push komponen primitives ke GitHub.
 
 ---
 
