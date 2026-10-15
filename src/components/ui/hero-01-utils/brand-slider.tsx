@@ -1,110 +1,61 @@
 "use client"
 
 import * as React from "react"
-import Image from "next/image"
+import { Marquee } from "@/components/ui/marquee"
 import { motion } from "framer-motion"
-import {
-  UtensilsCrossed,
-  Shirt,
-  Wrench,
-  ShoppingBag,
-  Sparkles,
-  Store,
-  Briefcase,
-  Layers,
-} from "lucide-react"
 
 export interface BrandList {
-  image?: string
-  lightimg?: string
+  image: string
   name: string
-  subtitle?: string
+  lightimg: string
 }
 
-interface BrandSliderProps {
-  brandList: BrandList[]
-}
-
-const CATEGORY_ICONS: Record<string, React.ReactNode> = {
-  "Kuliner & F&B": <UtensilsCrossed className="h-5 w-5 text-emerald-600" />,
-  "Fashion & Retail": <Shirt className="h-5 w-5 text-emerald-600" />,
-  "Jasa Lokal & Servis": <Wrench className="h-5 w-5 text-emerald-600" />,
-  "Toko Online & E-Commerce": <ShoppingBag className="h-5 w-5 text-emerald-600" />,
-  "Kecantikan & Barbershop": <Sparkles className="h-5 w-5 text-emerald-600" />,
-  "Distributor & Grosir": <Store className="h-5 w-5 text-emerald-600" />,
-  "Konsultan & Bisnis": <Briefcase className="h-5 w-5 text-emerald-600" />,
-}
-
-export default function BrandSlider({ brandList }: BrandSliderProps) {
-  // Duplicate for seamless infinite loop effect
-  const marqueeItems = [...brandList, ...brandList]
-
+function BrandSlider({ brandList }: { brandList: BrandList[] }) {
   return (
-    <div className="w-full border-y border-slate-200/70 bg-slate-50/70 py-8 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-5 text-center">
-        <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500">
-          Dipercaya &amp; Cocok untuk Berbagai Bisnis UMKM Indonesia
-        </p>
-      </div>
-
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-        <motion.div
-          className="flex items-center gap-6 sm:gap-8 w-max"
-          animate={{
-            x: ["0%", "-50%"],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 25,
-              ease: "linear",
-            },
-          }}
-        >
-          {marqueeItems.map((brand, index) => {
-            if (brand.image) {
-              return (
-                <div
-                  key={`${brand.name}-${index}`}
-                  className="flex h-12 items-center justify-center rounded-xl border border-slate-200/80 bg-white px-6 py-2 shadow-xs hover:border-emerald-300 transition-colors"
-                >
-                  <img
-                    src={brand.image}
-                    alt={brand.name}
-                    className="h-6 w-auto max-w-[120px] object-contain opacity-75 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              )
-            }
-
-            const icon = CATEGORY_ICONS[brand.name] ?? (
-              <Layers className="h-5 w-5 text-emerald-600" />
-            )
-
-            return (
-              <div
-                key={`${brand.name}-${index}`}
-                className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-2.5 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all"
-              >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50">
-                  {icon}
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-semibold text-slate-900 whitespace-nowrap">
-                    {brand.name}
-                  </p>
-                  {brand.subtitle && (
-                    <p className="text-[11px] text-slate-500 whitespace-nowrap">
-                      {brand.subtitle}
-                    </p>
-                  )}
-                </div>
+    <section>
+      <div className="py-6 md:py-10">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.6, ease: "easeInOut" }}
+            className="flex flex-col gap-3"
+          >
+            <div className="flex justify-center text-center py-3 md:py-4 relative">
+              <div className="flex items-center justify-center gap-4">
+                <div className="hidden md:block h-0.5 w-40 bg-gradient-to-l from-muted-foreground to-white dark:from-muted-foreground dark:to-transparent opacity-20" />
+                <p className="text-sm font-normal sm:px-2 px-10 text-muted-foreground text-center">
+                  Dipercaya oleh 1000+ brand &amp; UMKM di seluruh Indonesia
+                </p>
+                <div className="hidden md:block h-0.5 w-40 bg-gradient-to-r from-muted-foreground to-white dark:from-muted-foreground dark:to-transparent opacity-20" />
               </div>
-            )
-          })}
-        </motion.div>
+            </div>
+            {brandList && brandList.length > 0 && (
+              <div className="py-4">
+                <Marquee pauseOnHover className="[--duration:20s] p-0">
+                  {brandList.map((brand, index) => (
+                    <div key={index}>
+                      <img
+                        src={brand.image}
+                        alt={brand.name}
+                        className="w-36 h-8 mr-6 lg:mr-20 dark:hidden object-contain"
+                      />
+                      <img
+                        src={brand.lightimg}
+                        alt={brand.name}
+                        className="hidden dark:block w-36 h-8 mr-12 lg:mr-20 object-contain"
+                      />
+                    </div>
+                  ))}
+                </Marquee>
+              </div>
+            )}
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
+
+export default BrandSlider

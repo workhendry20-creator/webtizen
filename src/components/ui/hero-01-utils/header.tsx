@@ -1,134 +1,226 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
-import { Menu, MessageCircle, ArrowRight } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { useState, useEffect, useCallback } from "react"
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
+  SheetTitle,
+  SheetClose,
 } from "@/components/ui/sheet"
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
+import { Menu, X, ArrowUpRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
-export interface NavigationSection {
+export type NavigationSection = {
   title: string
   href: string
   isActive?: boolean
 }
 
-interface HeaderProps {
+type HeaderProps = {
   navigationData: NavigationSection[]
+  className?: string
 }
 
 const WHATSAPP_URL =
   "https://wa.me/628XXXXXXXXX?text=Halo%20Webtizen,%20saya%20mau%20konsultasi%20pembuatan%20website"
 
-export default function Header({ navigationData }: HeaderProps) {
-  const [isOpen, setIsOpen] = React.useState(false)
+const Logo = ({ className }: { className?: string }) => (
+  <div className={cn("flex items-center gap-2.5", className)}>
+    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-white font-black text-sm shadow-xs">
+      W
+    </div>
+    <span className="text-xl font-bold tracking-tight text-foreground">
+      Webtizen<span className="text-emerald-600">.id</span>
+    </span>
+  </div>
+)
+
+const CollaborateButton = ({ className }: { className?: string }) => (
+  <Button
+    asChild
+    className={cn(
+      "relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90",
+      className
+    )}
+  >
+    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+      <span className="relative z-10 transition-all duration-500">
+        Konsultasi WA
+      </span>
+      <span className="absolute right-1 w-8 h-8 bg-background text-foreground rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-36px)] group-hover:rotate-45 shadow-xs">
+        <ArrowUpRight size={16} />
+      </span>
+    </a>
+  </Button>
+)
+
+const Header = ({ navigationData, className }: HeaderProps) => {
+  const [sticky, setSticky] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleScroll = useCallback(() => {
+    setSticky(window.scrollY >= 50)
+  }, [])
+
+  const handleResize = useCallback(() => {
+    if (window.innerWidth >= 768) setIsOpen(false)
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [handleScroll, handleResize])
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand Logo */}
-        <Link href="#hero" className="flex items-center gap-1.5 group">
-          <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors">
-            Webtizen<span className="text-emerald-500">.id</span>
-          </span>
-          <span className="hidden sm:inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-            Solusi Digital UMKM
-          </span>
-        </Link>
+    <motion.header
+      initial={{ opacity: 0, y: -32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: "easeInOut" }}
+      className={cn(
+        "inset-x-0 z-50 px-4 flex items-center justify-center sticky top-0 h-20",
+        className
+      )}
+    >
+      <div
+        className={cn(
+          "w-full max-w-6xl flex items-center h-fit justify-between gap-3.5 lg:gap-6 transition-all duration-500",
+          sticky
+            ? "p-2.5 bg-background/80 backdrop-blur-lg border border-border/60 shadow-2xl shadow-primary/5 rounded-full"
+            : "bg-transparent border-transparent"
+        )}
+      >
+        {/* Logo */}
+        <div>
+          <a href="#hero">
+            <Logo className="gap-3" />
+          </a>
+        </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-          {navigationData.map((item) => (
-            <Link
-              key={item.title}
-              href={item.href}
-              className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-                item.isActive
-                  ? "text-emerald-600 bg-emerald-50/70"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
-              }`}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop Header CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          <Button
-            asChild
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-sm hover:shadow transition-all duration-200 flex items-center gap-2"
-          >
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Konsultasi Gratis via WhatsApp"
-            >
-              <MessageCircle className="h-4 w-4" />
-              <span>Konsultasi WA</span>
-            </a>
-          </Button>
+        <div>
+          <NavigationMenu className="max-lg:hidden bg-muted p-0.5 rounded-full">
+            <NavigationMenuList className="flex gap-0">
+              {navigationData.map((navItem) => (
+                <NavigationMenuItem key={navItem.title}>
+                  <NavigationMenuLink
+                    href={navItem.href}
+                    className={cn(
+                      "px-2 lg:px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-foreground hover:bg-background outline outline-transparent hover:outline-border hover:shadow-xs transition tracking-normal",
+                      navItem.isActive ? "bg-background text-foreground" : ""
+                    )}
+                  >
+                    {navItem.title}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
-        {/* Mobile Navigation Trigger */}
-        <div className="flex md:hidden">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-9 w-9 text-slate-700 border-slate-200"
-                aria-label="Open menu"
-              >
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[350px] p-6">
-              <SheetHeader className="text-left pb-4 border-b border-slate-100">
-                <SheetTitle className="text-lg font-bold text-slate-900 flex items-center gap-1">
-                  Webtizen<span className="text-emerald-500">.id</span>
-                </SheetTitle>
-              </SheetHeader>
-              <div className="flex flex-col gap-3 py-6">
-                {navigationData.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-emerald-600 transition-colors"
-                  >
-                    <span>{item.title}</span>
-                    <ArrowRight className="h-4 w-4 text-slate-400" />
-                  </Link>
-                ))}
-              </div>
-              <div className="pt-4 border-t border-slate-100">
-                <Button
-                  asChild
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 flex items-center justify-center gap-2 shadow-sm"
+        {/* Desktop CTA & Mobile Toggle */}
+        <div className="flex gap-4">
+          <CollaborateButton className="hidden lg:flex" />
+
+          <div className="lg:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger id="mobile-menu-trigger" asChild>
+                <button
+                  type="button"
+                  className="rounded-full border border-border p-2 block cursor-pointer hover:bg-muted transition-colors"
+                  aria-label="Buka Menu"
                 >
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <MessageCircle className="h-4 w-4" />
-                    <span>Konsultasi Gratis via WA</span>
+                  <Menu width={20} height={20} />
+                </button>
+              </SheetTrigger>
+
+              <SheetContent
+                side="right"
+                className="w-full sm:w-96 p-0 border-l-0"
+              >
+                <div className="flex items-center justify-between p-6">
+                  <a href="#hero" onClick={() => setIsOpen(false)}>
+                    <Logo className="gap-2" />
                   </a>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+                  <SheetClose id="mobile-menu-close" asChild>
+                    <button
+                      type="button"
+                      className="rounded-full border border-border p-2.5 block cursor-pointer hover:bg-muted transition-colors"
+                      aria-label="Tutup Menu"
+                    >
+                      <X width={16} height={16} />
+                    </button>
+                  </SheetClose>
+                </div>
+
+                <div className="flex flex-col gap-12 px-6 pb-6 overflow-y-auto">
+                  <div className="flex flex-col gap-8">
+                    <SheetTitle className="sr-only">Menu</SheetTitle>
+                    <NavigationMenu
+                      orientation="vertical"
+                      className="items-start flex-none w-full"
+                    >
+                      <NavigationMenuList className="flex flex-col items-start gap-3 w-full">
+                        {navigationData.map((item) => (
+                          <NavigationMenuItem key={item.title} className="w-full">
+                            <NavigationMenuLink
+                              href={item.href}
+                              onClick={() => setIsOpen(false)}
+                              className={cn(
+                                "group/nav flex items-center text-2xl font-semibold tracking-tight transition-all p-0 hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent",
+                                item.isActive
+                                  ? "text-primary"
+                                  : "text-muted-foreground hover:text-foreground hover:translate-x-2"
+                              )}
+                            >
+                              <div
+                                className={cn(
+                                  "h-0.5 bg-primary transition-all duration-300 overflow-hidden",
+                                  item.isActive
+                                    ? "w-4 mr-2 opacity-100"
+                                    : "w-0 opacity-0 group-hover/nav:w-4 group-hover/nav:mr-2 group-hover/nav:opacity-100"
+                                )}
+                              />
+                              {item.title}
+                            </NavigationMenuLink>
+                          </NavigationMenuItem>
+                        ))}
+                      </NavigationMenuList>
+                    </NavigationMenu>
+
+                    <div className="w-fit">
+                      <CollaborateButton />
+                    </div>
+                  </div>
+
+                  <div className="mt-auto flex flex-col gap-4">
+                    <p className="text-sm text-muted-foreground">
+                      &copy; 2026 Webtizen.id
+                    </p>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }
+
+export default Header
