@@ -1,4 +1,5 @@
 import React from "react"
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
 
 export default function Footer() {
   return (
@@ -21,8 +22,8 @@ export default function Footer() {
             target="_blank"
           >
             <span>Chat WhatsApp Sekarang</span>
-            <span className="w-6 h-6 rounded-full bg-white text-editorial-black group-hover:bg-brand-light flex items-center justify-center text-xs font-bold transition">
-              ↗
+            <span className="w-6 h-6 rounded-full bg-white text-editorial-black group-hover:bg-brand-light flex items-center justify-center transition-transform group-hover:scale-110">
+              <WhatsAppIcon className="w-3.5 h-3.5" />
             </span>
           </a>
         </div>

@@ -1,4 +1,5 @@
 import React from "react"
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
 
 export default function Pricing() {
   return (
@@ -117,10 +118,11 @@ export default function Pricing() {
                 </ul>
               </div>
               <a
-                className="w-full text-center py-3.5 px-6 rounded-full bg-editorial-black hover:bg-brand text-white transition font-medium text-sm shadow-md"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-editorial-black hover:bg-brand text-white transition font-medium text-sm shadow-md group"
                 href="https://wa.me/6281234567890?text=Halo%20Webtizen,%20saya%20ingin%20ambil%20Paket%20Terima%20Beres%20Rp1.499.000"
               >
-                Ambil Paket Terima Beres ↗
+                <span>Ambil Paket Terima Beres</span>
+                <WhatsAppIcon className="w-4 h-4 transition-transform group-hover:scale-110" />
               </a>
             </div>
           </div>

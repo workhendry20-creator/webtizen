@@ -30,9 +30,7 @@ export default function Hero() {
             href="#harga"
           >
             <span>Mulai Sekarang</span>
-            <span className="w-6 h-6 rounded-full bg-white text-editorial-black group-hover:bg-brand-light flex items-center justify-center text-xs font-bold transition">
-              ↗
-            </span>
+
           </a>
 
           {/* Divider on mobile */}

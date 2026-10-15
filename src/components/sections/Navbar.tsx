@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -56,11 +57,10 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setActiveNav(link.href)}
-                className={`relative px-4 py-1.5 text-sm transition-colors duration-200 ${
-                  isActive
-                    ? "text-editorial-black font-medium"
-                    : "text-editorial-muted hover:text-editorial-black"
-                }`}
+                className={`relative px-4 py-1.5 text-sm transition-colors duration-200 ${isActive
+                  ? "text-editorial-black font-medium"
+                  : "text-editorial-muted hover:text-editorial-black"
+                  }`}
               >
                 {isActive && (
                   <motion.span
@@ -78,13 +78,15 @@ export default function Navbar() {
         {/* CTA Button Kapsul Hitam */}
         <div className="flex items-center gap-3">
           <a
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-editorial-black text-white hover:bg-brand transition-colors text-sm font-medium tracking-tight shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-editorial-black text-white hover:bg-brand transition-colors text-sm font-medium tracking-tight shadow-sm group"
             href="https://wa.me/6281234567890?text=Halo%20Webtizen,%20saya%20ingin%20konsultasi%20pembuatan%20website"
             rel="noopener noreferrer"
             target="_blank"
           >
             <span>Konsultasi WA</span>
-            <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-xs">↗</span>
+            <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white transition-transform group-hover:scale-110">
+              <WhatsAppIcon className="w-3.5 h-3.5" />
+            </span>
           </a>
 
           {/* Mobile Hamburger Toggle Button */}
@@ -120,11 +122,10 @@ export default function Navbar() {
                     setActiveNav(link.href)
                     setMobileMenuOpen(false)
                   }}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition ${
-                    isActive
-                      ? "bg-brand/10 text-brand font-semibold"
-                      : "text-editorial-charcoal hover:bg-neutral-100"
-                  }`}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition ${isActive
+                    ? "bg-brand/10 text-brand font-semibold"
+                    : "text-editorial-charcoal hover:bg-neutral-100"
+                    }`}
                 >
                   {link.label}
                 </a>
@@ -136,10 +137,12 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full bg-editorial-black text-white hover:bg-brand text-sm font-medium transition"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full bg-editorial-black text-white hover:bg-brand text-sm font-medium transition group"
               >
-                <span>Konsultasi WA</span>
-                <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs">↗</span>
+                <span>Konsultasi</span>
+                <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-white transition-transform group-hover:scale-110">
+                  <WhatsAppIcon className="w-3 h-3" />
+                </span>
               </a>
             </div>
           </nav>
