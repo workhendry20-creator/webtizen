@@ -1,12 +1,14 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeNav, setActiveNav] = useState("#beranda")
 
   const navLinks = [
-    { label: "Beranda", href: "#beranda", active: true },
+    { label: "Beranda", href: "#beranda" },
     { label: "Tentang Kami", href: "#tentang" },
     { label: "Layanan", href: "#layanan" },
     { label: "Alur Kerja", href: "#alur-kerja" },
@@ -14,6 +16,23 @@ export default function Navbar() {
     { label: "Portofolio", href: "#portofolio" },
     { label: "FAQ", href: "#faq" },
   ]
+
+  // Optional ScrollSpy to highlight corresponding nav link when scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 140
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const section = document.querySelector(navLinks[i].href) as HTMLElement | null
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveNav(navLinks[i].href)
+          break
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all border-b border-black/[0.04]">
@@ -27,21 +46,33 @@ export default function Navbar() {
           />
         </a>
 
-        {/* Floating Pill Navigation (Reference Style) */}
+        {/* Floating Pill Navigation with Animated Sliding Active Pill */}
         <nav className="hidden md:flex items-center bg-[#f3f4f6]/90 p-1.5 rounded-full border border-black/5 text-sm font-medium text-editorial-muted shadow-sm">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              className={`px-4 py-1.5 transition ${
-                link.active
-                  ? "text-editorial-black bg-white rounded-full shadow-xs"
-                  : "hover:text-editorial-black"
-              }`}
-              href={link.href}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeNav === link.href
+
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setActiveNav(link.href)}
+                className={`relative px-4 py-1.5 text-sm transition-colors duration-200 ${
+                  isActive
+                    ? "text-editorial-black font-medium"
+                    : "text-editorial-muted hover:text-editorial-black"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeNavPill"
+                    className="absolute inset-0 bg-white rounded-full shadow-xs -z-10"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                )}
+                <span className="relative z-10">{link.label}</span>
+              </a>
+            )
+          })}
         </nav>
 
         {/* CTA Button Kapsul Hitam */}
@@ -79,20 +110,26 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-black/5 bg-white px-6 py-4 shadow-lg animate-in slide-in-from-top-2">
           <nav className="flex flex-col space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition ${
-                  link.active
-                    ? "bg-brand/10 text-brand font-semibold"
-                    : "text-editorial-charcoal hover:bg-neutral-100"
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeNav === link.href
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => {
+                    setActiveNav(link.href)
+                    setMobileMenuOpen(false)
+                  }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition ${
+                    isActive
+                      ? "bg-brand/10 text-brand font-semibold"
+                      : "text-editorial-charcoal hover:bg-neutral-100"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              )
+            })}
             <div className="pt-2">
               <a
                 href="https://wa.me/6281234567890?text=Halo%20Webtizen,%20saya%20ingin%20konsultasi%20pembuatan%20website"
