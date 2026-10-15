@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import {
   UtensilsCrossed,
@@ -42,13 +43,13 @@ export default function BrandSlider({ brandList }: BrandSliderProps) {
     <div className="w-full border-y border-slate-200/70 bg-slate-50/70 py-8 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-5 text-center">
         <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500">
-          Cocok untuk Berbagai Sektor Industri UMKM Indonesia
+          Dipercaya &amp; Cocok untuk Berbagai Bisnis UMKM Indonesia
         </p>
       </div>
 
       <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
         <motion.div
-          className="flex gap-4 sm:gap-6 w-max"
+          className="flex items-center gap-6 sm:gap-8 w-max"
           animate={{
             x: ["0%", "-50%"],
           }}
@@ -62,9 +63,25 @@ export default function BrandSlider({ brandList }: BrandSliderProps) {
           }}
         >
           {marqueeItems.map((brand, index) => {
+            if (brand.image) {
+              return (
+                <div
+                  key={`${brand.name}-${index}`}
+                  className="flex h-12 items-center justify-center rounded-xl border border-slate-200/80 bg-white px-6 py-2 shadow-xs hover:border-emerald-300 transition-colors"
+                >
+                  <img
+                    src={brand.image}
+                    alt={brand.name}
+                    className="h-6 w-auto max-w-[120px] object-contain opacity-75 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+              )
+            }
+
             const icon = CATEGORY_ICONS[brand.name] ?? (
               <Layers className="h-5 w-5 text-emerald-600" />
             )
+
             return (
               <div
                 key={`${brand.name}-${index}`}
